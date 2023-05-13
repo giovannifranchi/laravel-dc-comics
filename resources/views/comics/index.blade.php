@@ -21,7 +21,7 @@
             <th>Series</th>
             <th>Sale Date</th>
             <th>Type</th>
-            <th>Details</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             @foreach ($comics as $comic)
@@ -32,9 +32,19 @@
                     <td>{{$comic['sale_date']}}</td>
                     <td>{{$comic['type']}}</td>
                     <td>
-                        <a href="{{route('comics.show', $comic->id)}}">
-                            <button class="btn btn-info">Go To Details</button>
-                        </a>
+                        <div class="d-flex gap-2">
+                            <a href="{{route('comics.show', $comic->id)}}" class="text-decoration-none">
+                                <button class="btn btn-info">Details</button>
+                            </a>
+                            <a href="{{route('comics.edit', $comic->id)}}">
+                                <button class="btn btn-warning">Edit</button>
+                            </a>
+                            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
