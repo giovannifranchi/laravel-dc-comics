@@ -9,6 +9,16 @@
 </head>
 <body>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+   @endif
+
     <div class="container py-3">
         <h1 class="mb-3">Edit record {{$comic->id}}</h1>
         <form action="{{route('comics.update', $comic->id)}}" method="POST">

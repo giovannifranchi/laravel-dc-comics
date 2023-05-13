@@ -27,7 +27,7 @@ class ComicRequest extends FormRequest
         return [
             'title' => 'required|max:200|string',
             'description' => 'required|string',
-            'thumb'=>'required|url|ends_with:png,jpg,webp',
+            'thumb'=>'required|url',
             'price'=>'required|numeric',
             'series'=>'required|string|max:50',
             'sale_date'=>'required|date',
@@ -43,8 +43,7 @@ class ComicRequest extends FormRequest
 
         return [
             'required' => $obbligatorio,
-            'thumb.ulr'=>'deve essere inserito un url valido',
-            'thumb.ends_with'=>'deve essere in formato jpg, png o webp',
+            'thumb.url'=>'deve essere inserito un url valido',
             'series.max'=> 'il campo non può superare i 50 caratteri',
         ];
     }

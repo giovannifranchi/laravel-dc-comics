@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -36,11 +37,13 @@ class ComicsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
+        $data = $request->validate();
+
         $newComic = new Comic();
         
-        $newComic->fill($request->all());
+        $newComic->fill($data);
 
         $newComic->save();
 
@@ -80,11 +83,11 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComicRequest $request, $id)
     {
         $comicToUpdate = Comic::find($id);
 
-        $data = $request->all();
+        $data = $request->validate();
 
         $comicToUpdate->update($data);
 
