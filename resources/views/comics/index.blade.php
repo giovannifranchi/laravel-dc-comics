@@ -10,7 +10,9 @@
 <body>
 
 <div class="container py-3">
-    <h1>Comics in storage</h1>
+    <h1 class="py-3">Comics in storage</h1>
+
+    <a href="{{route('comics.create')}}"><button class="btn btn-success mb-5">Add New Record</button></a>
 
     <table class="table">
         <thead>
