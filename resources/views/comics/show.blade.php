@@ -9,9 +9,9 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container py-3">
 
-        <a href="{{route('comics.index')}}"><button class="btn btn-info">Go Back to List</button></a>
+        <a href="{{route('comics.index')}}"><button class="btn btn-info mb-5">Go Back to List</button></a>
 
 
         <h1>Details for Comic: {{$comic->title}}</h1>
